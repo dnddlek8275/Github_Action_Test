@@ -1,0 +1,36 @@
+name: Unit Production
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  COMMANDER_NAME: "테란 사령관"
+  UNIT_NAME: "해병(Marine)"
+  MINERAL_COST: "50"
+  VOICE_LINE: "한 판 붙어볼까, 애송이?"
+
+jobs:
+  unit-production:
+    runs-on: ubuntu-latest
+    steps:
+      # 2. 첫 번째 단계: 환경 변수를 활용한 자원 및 상태 확인
+      - name: 📡 1단계 - 자원 및 보급고 확인
+        run: |
+          echo "명령을 내리시겠습니까, ${{ env.COMMANDER_NAME }}님?"
+          echo "현재 ${{ env.UNIT_NAME }} 훈련을 위한 자원을 확인합니다."
+          echo "필요 광물: ${{ env.MINERAL_COST }} ... 자원 충분함!"
+
+      # 3. 두 번째 단계: 단순 텍스트 출력 (작업 진행 상황)
+      - name: 🏭 2단계 - 훈련소 입소 및 장비 장착
+        run: |
+          echo "병영(Barracks)에서 훈련을 시작합니다..."
+          echo "CMC 전투복 착용 중..."
+          echo "C-14 가우스 관통 소총 지급 완료!"
+
+      # 4. 세 번째 단계: 환경 변수와 텍스트를 혼합하여 최종 결과 출력
+      - name: 🚀 3단계 - 전장 투입 완료
+        run: |
+          echo "훈련 완료! 신규 ${{ env.UNIT_NAME }}이(가) 전장에 배치되었습니다."
+          echo "🔊 시스템 메시지: ${{ env.VOICE_LINE }}"
