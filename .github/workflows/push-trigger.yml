@@ -1,0 +1,13 @@
+name: Push Trigger Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  auto-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto run check
+        run: echo "main branch push triggered this workflow"
